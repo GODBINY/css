@@ -1,0 +1,101 @@
+1. display
+
+* display 속성 : HTML element를 어떤 형식으로 보여줄지에 대한 속성. 눈에 보이는 모든 HTML elements는 display 속성을 가지고 있다.
+
+* display: inline 
+  - 텍스트처럼 같은 줄에 쭉 나열됨. 공간이 모자라면 다음줄로 넘어가짐.
+  - 기본적으로 박스 형태가 아니기때문에 width, height로 크기를 지정할 수 없다. img를 제외하고는
+  => <img, <span, <a, <strong
+
+
+* display: block 
+  - 상자가 쌓인다는 느낌 
+  - 줄바꿈 됨. 기본적으로 직사각형. 박스라고 부름
+  - width는 자기가 늘어날 수 있는 최대치(자기 부모 요소의 width)
+  - height는 자기 내용물의 높이만큼. 따라서 내용물이 없을 경우 배경색을 칠해도 아예 안보이는 현상이 발생한다.
+  => div, p
+
+* display: inline-block
+  - inline과 block의 특징을 모두 가지고 있음.
+  - 줄처럼 쭉 나열되지만 박스형태도 가지고 있어서 width, height를 지정할 수 있음.
+  - inline-block 요소가 두개 배치되면, 크기가 허용하는 한 같은 줄에 위치하는데, 미세한 여백이 생김. 이거는 inline-block이 텍스트 속성을 갖고있기때문에,
+    태그 사이에 있는 줄바꿈이나 띄어쓰기가 조그만 틈을 만들어 내는것임. 이럴때는 같은 줄에 위치해도 좋지만, 부모 요소의 font-size: 0으로 만드는것. 
+    그런데 그렇게 하면 자식 안에 있던 글씨들도 다 사라져버리므로, 각 자식들에게도 폰트 사이즈를 지정해주면 된다.
+
+* vertical-align: top
+  - 수직정렬인데 최상위 줄이 맞도록 맞추는것!
+
+* p 태그 자체에도 마진이 있다.
+
+
+2. Flex
+
+* flex: 요소들을 배치하는 것.
+
+* flex layout을 위한 기본적인 구조
+<div class="container">
+  <div class="item">flex1</div>
+  <div class="item">flex2</div>
+  <div class="item">flex3</div>
+</div>
+==> 부모 요소(div.container) 명칭 : Flex Container
+      - Flex의 영향을 받는 전체 공간
+
+==> 자식 요소(div.item) 명칭 : Flex Item
+      - 설정된 속성에 따라 각각의 item이 배치됨
+
+
+* flex의 속성
+1) 컨테이너에 적용하는 속성
+2) 아이템에 적용하는 속성
+두가지가 있다.
+
+* display: flex;
+- item 내 내용물의 width만큼만 늘어난채로, container 안에 나란히 배치됨. 뭔가 inline 과 닮았네.
+- height는 컨테이너의 높이만큼 늘어나므로, 뭔가 안에 게시글을 넣는 칼럼 형태에 적합하다.
+[ [  ] [  ]     ]
+
+* display: inline-flex;
+- inline-block 마냥 박스 영역이 있으면서 한줄에 들어가짐.
+[ [  ] [  ] ]
+
+
+() () () ------ |
+() : flex
+- : 메인축
+| : 교차축
+
+
+* flex-direction: row;
+[ [ A ] [ B ] [C]     ]
+
+* flex-direction: row-reverse;
+[     [C] [ B ] [ A ] ]
+
+* flex-direction: column;
+[     ]
+[[ A ]]
+[[ B ]]
+[ [C] ]
+
+* flex-direction: column-reverse;
+[ [C] ]
+[[ B ]]
+[[ A ]]
+[     ]
+
+* 이를테면 작은 화면에서는 column으로 배치하다가, 지정한 폭 이상으로 넓어지면 row 형태로 바꿔주는것도 좋음
+
+* flex-wrap: 줄넘김 처리. 줄이 꽉 찼을 때 줄바꿈을 어떻게 할 지 결정하는 속성.
+
+* flex-wrap: nowrap; (기본값)
+- 넘치면 그냥 화면 밖으로 삐져나가버림
+
+* flex-wrap: wrap;
+- 넘치면 줄넘김 함 (아래로)
+
+* flex-wrap: wrap-reverse;
+- 넘치면 위로 줄 올려버림
+
+
+
