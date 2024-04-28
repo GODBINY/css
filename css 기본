@@ -176,13 +176,40 @@
 
 
 3) flex-shrink
-- flex-grow와 쌍을 이룸. 아이템이 flex-basis보다 작아질 수 있는지 결정 
+- flex-grow와 세트임. 아이템이 flex-basis보다 작아질 수 있는지 결정 
+- 기본값은 1이고, 0보다 큰 값이 세팅되면 아ㅣ템이 flexible box로 변하고 flex-basis보다 작아짐
+- 만일 첫번째 요소를 flex-shrink:0; width: 100px;으로 해두었고 두번째 요소는 flex-grow: 1;로 하고
+픽셀을 아주 작게 지정했다면, 첫번째 요소는 분명 찌그러져야할텐데 그렇지 않고 100px의 너비를 잘 가지고 있음
+
+
+
 *) flex
+- 총 집합 속성으로,
+flex-grow, flex-shrink, flex-basis 순서로 쓰인다.
+예를들면 flex: 1 20px -> grow, shirink 는 1이고 basis는 20px
+flex: 1 2 auto; -> grow 1 , shirink 2, basis auto
+flex: 1 -> grow 1, shirink 1, flex-basis 0
 
 
-* align-self
+
+* align-self : 아이템의 수직축 정렬. 기본값은 auto이고 이거는 align-item 설정을 상속받음.
+align-item보다 우선권이 있음.
+stretch, flex-start, flex-end, center, baseline 옵션이 있음
 
 
-* order
+* order : 아이템들의 나열 순서를 결정하는 속성. 작은 숫자일 수록 먼저 배치됨.
+유의할 점 - 시각적으로만 순서를 변경한것이므로, html 구조가 변경되는것이 아님. 따라서 접근성을 고려했을땐 의미가 없음.
+.item.nth-child(1) { order: 3; }
+.item.nth-child(2) { order: 1; }
+.item.nth-child(3) { order: 2; }
+[두번째요소 세번째요소 첫번째요소]
 
-* z-index
+
+
+* z-index : z 축 ㅈㅓㅇ렬을 가능하게 함. 숫자가 클 수록 위로 올라감.
+position에서의 z-index와 동일함.
+.item:nth-child(2) {
+	z-index: 1;
+	transform: scale(1);
+}
+z-index의 기본값은 0이어서 1 이상의 숫자만 넣어도 다른 아이템보다 위아래양옆으로 커짐.
